@@ -8,7 +8,7 @@ const ejs = require("ejs");
 const _ = require("lodash");
 
 
-mongoose.connect("mongodb://localhost:27017/postDB",{useNewUrlParser:true , useUnifiedTopology:true});
+mongoose.connect("mongodb+srv://admin-sarthak:Test123@cluster0-ixb0e.mongodb.net/postDB",{useNewUrlParser:true , useUnifiedTopology:true});
 
 const postSchema = {
   title:String,
@@ -79,7 +79,11 @@ app.get("/posts/:titles",function(req,res){
 })
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-app.listen(3000, function() {
+app.listen(port, function () {
   console.log("Server started on port 3000");
 });
